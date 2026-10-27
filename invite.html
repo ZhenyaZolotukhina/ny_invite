@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Девочки, готовьтесь! Новый год 2027 в Москве</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Caveat:wght@600&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff0f4;--bg2:#ffd9e6;--ink:#3a0f26;--soft:#7a4a62;--pink:#e5136b;--gold:#b8860b;--card:rgba(255,255,255,.7);--line:rgba(229,19,107,.25);--btn-ink:#fff;
+  color-scheme:light;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#25081b;--bg2:#4a0d33;--ink:#fff3e6;--soft:#e9bfd3;--pink:#ff4d9a;--gold:#ffd98a;--card:rgba(255,255,255,.07);--line:rgba(255,217,138,.3);--btn-ink:#2a0a1f;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#25081b;--bg2:#4a0d33;--ink:#fff3e6;--soft:#e9bfd3;--pink:#ff4d9a;--gold:#ffd98a;--card:rgba(255,255,255,.07);--line:rgba(255,217,138,.3);--btn-ink:#2a0a1f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.55;color:var(--ink);background:radial-gradient(1000px 600px at 80% -10%,var(--bg2),transparent 70%),radial-gradient(800px 500px at 0% 40%,var(--bg2),transparent 70%),var(--bg);overflow-x:hidden}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+.bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bubbles i{position:absolute;bottom:-30px;border-radius:50%;border:1.5px solid var(--gold);opacity:.5;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) translateX(var(--dx,20px));opacity:0}}
+main{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 20px 80px}
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:48px 0 24px}
+.hand{font-family:Caveat,cursive;font-size:clamp(26px,6vw,36px);color:var(--pink);margin:0;transform:rotate(-3deg)}
+h1{font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(34px,10vw,72px);line-height:1.02;margin:10px 0 6px;letter-spacing:-.02em;background:linear-gradient(100deg,var(--pink),var(--gold) 60%,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance}
+.year{font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(18px,5vw,28px);color:var(--gold);margin:0 0 22px}
+.lead{max-width:30em;margin:0 auto 26px;color:var(--soft)}
+.when{display:inline-block;margin:0 auto;padding:14px 22px;border:1.5px dashed var(--line);border-radius:999px;font-family:Unbounded,sans-serif;font-size:clamp(14px,3.8vw,18px)}
+.count{display:flex;gap:10px;justify-content:center;margin-top:26px}
+.count div{min-width:68px;padding:10px 6px;border-radius:18px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(6px)}
+.count b{display:block;font-family:Unbounded,sans-serif;font-size:26px;color:var(--pink)}
+.count span{font-size:13px;color:var(--soft)}
+h2{font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(22px,6vw,32px);margin:56px 0 18px;text-wrap:balance}
+.plan{list-style:none;margin:0;padding:0;position:relative}
+.plan:before{content:"";position:absolute;left:19px;top:10px;bottom:10px;border-left:2px dotted var(--line)}
+.plan li{position:relative;padding:0 0 22px 58px}
+.plan .dot{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--pink);display:grid;place-items:center;font-size:20px;box-shadow:0 0 0 5px var(--card)}
+.plan h3{margin:0 0 2px;font-size:18px}
+.plan small{color:var(--gold);font-weight:600}
+.plan p{margin:4px 0 0;color:var(--soft)}
+.secret{margin-top:6px;padding:26px 22px;border-radius:26px;text-align:center;background:linear-gradient(135deg,var(--pink),#7b2cff);color:#fff;cursor:pointer;border:0;width:100%;font:inherit;box-shadow:0 14px 40px -12px var(--pink)}
+.secret:focus-visible,.cta:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.secret .big{font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(20px,5.5vw,28px);display:block;margin:6px 0}
+.secret .blur{display:block;filter:blur(6px);transition:filter .5s}
+.secret.open .blur{filter:none}
+.grid{display:grid;gap:14px}
+@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
+.card{padding:20px;border-radius:22px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(6px)}
+.card h3{margin:0 0 6px;font-family:Unbounded,sans-serif;font-size:16px;color:var(--gold)}
+.card p{margin:0;color:var(--soft)}
+.rsvp{text-align:center;margin-top:48px}
+.cta{font-family:Unbounded,sans-serif;font-weight:800;font-size:18px;padding:16px 32px;border:0;border-radius:999px;background:var(--gold);color:var(--btn-ink);cursor:pointer;box-shadow:0 10px 30px -10px var(--gold)}
+.cta:active{transform:scale(.97)}
+#ans{min-height:28px;margin-top:16px;font-family:Caveat,cursive;font-size:28px;color:var(--pink)}
+footer{text-align:center;color:var(--soft);font-size:14px;margin-top:40px}
+@media(prefers-reduced-motion:reduce){.bubbles{display:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="bubbles" id="bub" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<main>
+<section class="hero">
+  <p class="hand">девАчки, это вам ✨</p>
+  <h1>Встречаем Новый год вместе</h1>
+  <p class="year">2027 уже на пороге</p>
+  <p class="lead">Вкусный обед, тёплая компания, много смеха и один секрет, который я храню от вас уже слишком долго. Собираемся в Москве, всех жду!</p>
+  <div><span class="when">19 декабря 2026 · Москва</span></div>
+  <div class="count" id="count" role="timer" aria-label="Сколько осталось до встречи">
+    <div><b id="d">–</b><span>дней</span></div><div><b id="h">–</b><span>часов</span></div><div><b id="m">–</b><span>минут</span></div><div><b id="s">–</b><span>секунд</span></div>
+  </div>
+</section>
+
+<h2>Как пройдёт наш день</h2>
+<ol class="plan">
+  <li><span class="dot">🚂</span><h3>Едем из Твери в Москву</h3><small>19 декабря, суббота</small><p>Приезжаем, выдыхаем и обнимаемся: так давно не виделись.</p></li>
+  <li><span class="dot">🍝</span><h3>Обед в Sempre</h3><small>в 15:00</small><p>Радуем вкусовые сосочки и рассказываем друг другу всё, что накопилось с прошлой встречи.</p></li>
+  <li><span class="dot">🥂</span><h3>Вечер: главное блюдо</h3><small>после ресторана</small><p>Тот самый секрет. Подробности расскажу позже.</p></li>
+</ol>
+
+<h2>Секретное мероприятие</h2>
+<button class="secret" id="sec" type="button" aria-expanded="false">
+  <span>нажми, если не боишься</span>
+  <span class="big">🤫 Тссс… это сюрприз</span>
+  <span class="blur" id="sb">Подсказка: вечер будет ярким, музыкальным и запоминающимся. Остальное узнаете на месте.</span>
+</button>
+
+<h2>Что нужно знать</h2>
+<div class="grid">
+  <div class="card"><h3>Дресс-код</h3><p>Свободный. Выбирайте то, в чём вам комфортно и приятно провести целый день и вечер.</p></div>
+  <div class="card"><h3>С собой</h3><p>Хорошее настроение, улыбку и готовность к приятному вечеру в любимой компании.</p></div>
+  <div class="card"><h3>Настрой</h3><p>Душевные разговоры, много смеха и немного праздника. Как у нас всегда и бывает.</p></div>
+  <div class="card"><h3>Важно</h3><p>Про секрет лучше не спрашивать: всё равно не скажу. 😏</p></div>
+</div>
+
+<div class="rsvp">
+  <button class="cta" id="yes" type="button">Я с вами! 🥂</button>
+  <div id="ans" aria-live="polite"></div>
+</div>
+<footer>С любовью, ваша Натали 💖 Встретимся 19 декабря!</footer>
+</main>
+<script>
+(function(){
+  var T=new Date("2026-12-19T15:00:00+03:00").getTime();
+  function pad(n){return String(n)}
+  function tick(){
+    var t=Math.max(0,T-Date.now()),s=Math.floor(t/1000);
+    document.getElementById("d").textContent=pad(Math.floor(s/86400));
+    document.getElementById("h").textContent=pad(Math.floor(s%86400/3600));
+    document.getElementById("m").textContent=pad(Math.floor(s%3600/60));
+    document.getElementById("s").textContent=pad(s%60);
+  }
+  tick();setInterval(tick,1000);
+
+  var b=document.getElementById("bub");
+  for(var i=0;i<18;i++){
+    var e=document.createElement("i"),z=6+Math.random()*16;
+    e.style.cssText="left:"+Math.random()*100+"%;width:"+z+"px;height:"+z+"px;animation-duration:"+(9+Math.random()*10)+"s;animation-delay:"+(-Math.random()*14)+"s;--dx:"+(Math.random()*60-30)+"px";
+    b.appendChild(e);
+  }
+
+  var c=document.getElementById("fx"),x=c.getContext("2d"),P=[],run=false;
+  var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function size(){c.width=innerWidth;c.height=innerHeight}size();addEventListener("resize",size);
+  var cols=["#ff4d9a","#ffd98a","#7b2cff","#ffffff","#ff9ec7"];
+  function boom(){
+    if(reduce)return;
+    for(var i=0;i<110;i++)P.push({x:innerWidth/2,y:innerHeight*.7,vx:(Math.random()-.5)*14,vy:-Math.random()*16-4,r:Math.random()*5+3,c:cols[i%cols.length],a:1,rot:Math.random()*6});
+    if(!run){run=true;loop()}
+  }
+  function loop(){
+    x.clearRect(0,0,c.width,c.height);
+    P=P.filter(function(p){return p.a>0.02});
+    P.forEach(function(p){p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.a-=.011;p.rot+=.2;
+      x.save();x.globalAlpha=Math.max(0,p.a);x.translate(p.x,p.y);x.rotate(p.rot);x.fillStyle=p.c;x.fillRect(-p.r,-p.r/2,p.r*2,p.r);x.restore()});
+    if(P.length)requestAnimationFrame(loop);else{run=false;x.clearRect(0,0,c.width,c.height)}
+  }
+
+  var sec=document.getElementById("sec");
+  sec.addEventListener("click",function(){
+    var o=sec.classList.toggle("open");
+    sec.setAttribute("aria-expanded",o);
+    if(o)boom();
+  });
+  var msgs=["Ураа, без тебя никак! 💃","Будет самый тёплый день! 💖","Бокалы за тебя уже стоят! 🥂","Записала тебя в список главных звёзд ✨"],k=0;
+  document.getElementById("yes").addEventListener("click",function(){
+    document.getElementById("ans").textContent=msgs[k++%msgs.length];boom();
+  });
+})();
+</script>
+</body>
+</html>
